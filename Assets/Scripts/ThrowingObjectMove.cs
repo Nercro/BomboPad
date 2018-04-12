@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ThrowingObjectMove : MonoBehaviour {
 
-    public Transform other;
-    private Transform _transform;
+    public Transform player;
+    public float playerPositionOffset = 2f;
     public int divider = 50;
     public int speed = 100;
     public float minObjectSize = 0.5f;
@@ -13,18 +13,28 @@ public class ThrowingObjectMove : MonoBehaviour {
     private float _yMin;
     private float _yMax;
 
+    private Transform _transform;
+    private Collider2D _collider2D;
+
     private void Awake()
     {
         _transform = transform;
+        _collider2D = GetComponent<Collider2D>();
+
         CameraAdjust();
-        
-        
     }
+
     private void Update()
     {
         RestrictingArea();
         ObjectScaler();
         Destroy(gameObject, 3f);
+
+        // ako je objekt iznad playera ukljuciti ce se collider da može biti pogođen
+        if (_transform.position.y > player.transform.position.y + playerPositionOffset)
+        {
+            _collider2D.enabled = true;
+        }
         
     }
 
@@ -45,7 +55,7 @@ public class ThrowingObjectMove : MonoBehaviour {
         _yMin = downMax.y;
         _yMax = upMax.y;
         
-        Debug.Log("ymin " + _yMin + " ymax " + _yMax);
+        //Debug.Log("ymin " + _yMin + " ymax " + _yMax);
         
     }
 

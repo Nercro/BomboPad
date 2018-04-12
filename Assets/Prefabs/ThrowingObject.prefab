@@ -69,10 +69,10 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1701045232436392}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -89,10 +89,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8003f644454e9d24588511276950abaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  other: {fileID: 4977367454558220, guid: 8a5bb72a2cd14c9419e452bcd2bd4aa6, type: 2}
+  player: {fileID: 4066258925138188, guid: c2c664b5f7a86414dbe52c4a233aefc2, type: 2}
+  playerPositionOffset: 2
   divider: 13
   speed: 20
-  direction: {x: 0, y: 0, z: 0}
+  minObjectSize: 0.5
+  maxObjectSize: 1
 --- !u!212 &212542766501277488
 SpriteRenderer:
   m_ObjectHideFlags: 1

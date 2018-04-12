@@ -9,11 +9,11 @@ public class PlayerMovement : MonoBehaviour {
     private Transform _transform;
     private float _movementHorizontal;
     private Rigidbody2D _rigidbody2D;
-
     private void Awake()
     {
         _transform = transform;
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        
     }
 
     private void Update()
@@ -26,5 +26,10 @@ public class PlayerMovement : MonoBehaviour {
         _movementHorizontal = Input.GetAxisRaw("Horizontal");
         Vector2 movement = new Vector2(_movementHorizontal * movementSpeed, 0f);
         _rigidbody2D.velocity = movement;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("player HIT " + other.name);
     }
 }
