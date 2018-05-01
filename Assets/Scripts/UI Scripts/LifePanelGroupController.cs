@@ -21,7 +21,7 @@ public class LifePanelGroupController : MonoBehaviour {
         LifePanelConterllers.Add(lifePanelControllerClone);
     }
 
-    public void RefreshLifePanel(int amount)
+    public void RefreshLifePanel(int amount, bool damage)
     {
         int lifeDelta = amount - LifePanelConterllers.Count;
 

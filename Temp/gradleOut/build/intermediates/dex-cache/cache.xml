@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Nercro\Documents\Machina Unity\Theatre Trouble\TheatreTrouble\Temp\gradleOut\libs\unity-classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="27.0.3"
+        sha1="9f3d3e32cdd44fcbf515f2825f68c63f2549e6b6">
+        <dex dex="C:\Users\Nercro\Documents\Machina Unity\Theatre Trouble\TheatreTrouble\Temp\gradleOut\build\intermediates\pre-dexed\debug\unity-classes_6df67dcf095f6dd5cbbafec73db710131145b925.jar" />
+    </item>
+
+</items>

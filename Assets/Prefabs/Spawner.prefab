@@ -54,13 +54,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwingObjectPrefab: {fileID: 1701045232436392, guid: 3b2619f28b4c91144abdaf5102e3a12a,
     type: 2}
-  numOfObject: 20
-  speed: 680
+  speed: 12
   spawnInterwal: 1.5
   xRandom: {x: -3, y: 3}
+  pointsObjectPercentage: 0.1
+  damageObjectPercentage: 0.9
+  lifeObjectPercentage: 1.1
+  difficultyIncrease: 10
   ThrowingObjects:
-  - {fileID: 1701045232436392, guid: d10eb8eb31c55c944baa025bfa7c94da, type: 2}
   - {fileID: 1701045232436392, guid: 3b2619f28b4c91144abdaf5102e3a12a, type: 2}
+  - {fileID: 1701045232436392, guid: d10eb8eb31c55c944baa025bfa7c94da, type: 2}
+  - {fileID: 1701045232436392, guid: d31c85a53343f534e941efef8df6d63d, type: 2}
+  _difficultyScore: 0
 --- !u!114 &114823194585730008
 MonoBehaviour:
   m_ObjectHideFlags: 1

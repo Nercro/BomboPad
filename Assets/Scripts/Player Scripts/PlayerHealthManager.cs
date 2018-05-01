@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 
 public class PlayerHealthManager : MonoBehaviour {
-
+    /*
     public int numOfLives = 3;
 
     public int currentNumOfLives = 3;
@@ -44,5 +44,5 @@ public class PlayerHealthManager : MonoBehaviour {
             currentNumOfLives = numOfLives;
 
         onHealthChangeEvent.Invoke(currentNumOfLives);
-    }
+    }*/
 }
