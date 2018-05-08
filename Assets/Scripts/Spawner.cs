@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
     
     public GameObject throwingObjectPrefab;
+    public GameObject throwingObjectsClonesParent;
    
     public float speed = 15.0f;
     public float spawnInterwal = 1.0f;
@@ -24,12 +25,15 @@ public class Spawner : MonoBehaviour {
     private float _nextSpawn = 0.0f;
 
     [SerializeField]
+    [Header("Read Only!")]
     private int _difficultyScore = 0;
     private Rigidbody2D _rigidbody2D;
 
     private void Awake()
     {
         GameManager.onScoreChangedEvent.AddListener(DifficultyIncrease);
+        GameManager.onGameOverEvent.AddListener(OnGameOver);
+
         _difficultyScore = difficultyIncrease;
     }
 
@@ -50,9 +54,6 @@ public class Spawner : MonoBehaviour {
     {
         Vector3 randomPositionSpawn = Vector3.zero;
         randomPositionSpawn.x = Random.Range(xRandom.x, xRandom.y);
-
-       // int randomObjectSpawn = Random.Range(0, ThrowingObjects.Count);
-
         
         if (Random.value > pointsObjectPercentage)
             _throwingObjectIndex = 0;
@@ -63,14 +64,14 @@ public class Spawner : MonoBehaviour {
         else if (Random.value > lifeObjectPercentage)
             _throwingObjectIndex = 2;
 
-        GameObject throwingObjectClone = Instantiate(ThrowingObjects[_throwingObjectIndex], transform.position + randomPositionSpawn, Quaternion.identity) as GameObject;
+        GameObject throwingObjectClone = Instantiate(ThrowingObjects[_throwingObjectIndex], transform.position + randomPositionSpawn, Quaternion.identity, throwingObjectsClonesParent.transform) as GameObject;
         _rigidbody2D = throwingObjectClone.GetComponent<Rigidbody2D>();
         _rigidbody2D.velocity = Vector2.up * speed;
-
     }
 
     private void DifficultyIncrease(int scoreAmount)
     {
+        // vjerojatnost spawnanja objekta i postavljanje minimalne vrijednosti spawna, speeda, i spawn intervala
         if (scoreAmount >= _difficultyScore)
         {
             if (pointsObjectPercentage >= 0.8f)
@@ -78,28 +79,29 @@ public class Spawner : MonoBehaviour {
                 pointsObjectPercentage = 0.8f;
                 damageObjectPercentage = 0.2f;
 
-                if (speed <= 21)
+                if (speed <= 13)
                 {
-                    speed += 1.0f;
+                    speed += 0.1f;
                     spawnInterwal -= 0.1f;
-
-
                 }
-                
-
             }
             else
             {
                 pointsObjectPercentage += 0.1f;
                 damageObjectPercentage -= 0.1f;
                 lifeObjectPercentage -= 0.1f;
-                speed += 1.0f;
+                speed += 0.1f;
                 spawnInterwal -= 0.1f;
             }
-            //TODO: brzina i spawn interval se moraju jos malo smanjiti spawn 0.7 speed 20
 
             _difficultyScore += difficultyIncrease;
         }
+    }
+
+    private void OnGameOver(bool isGameOver)
+    {
+        if (isGameOver)
+            Destroy(throwingObjectsClonesParent);
     }
 
     private void OnDrawGizmos()

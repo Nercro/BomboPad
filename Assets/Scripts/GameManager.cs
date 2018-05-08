@@ -8,18 +8,27 @@ public class HealthChangedEvent : UnityEvent<int, bool> { }
 
 public class ScoreChangedEvent : UnityEvent<int> { }
 
+public class GameOverEvent : UnityEvent<bool> { }
+
 public class GameManager : MonoBehaviour
 {
-
+    [Header("Taunt Animation Game Objects")]
     public GameObject tauntLeft;    //objekt sa aminmacijom
     public GameObject tauntRigth;   //objekt sa animacijom
+
+    [Header("Courtains closing Aniation Game Objects")]
+    public GameObject courtainLeft;
+    public GameObject courtainRigth;
     
+    [Header("Life settings")]
     public int maxNumOfLives = 3;
     public int currentNumOfLives = 3;
 
+    [Header("Time countdown settings")]
     public float timeLeft = 30;
     public Text timeLeftText;
 
+    [Header("Score settings")]
     public int score = 0;
     public Text scoreText;
 
@@ -28,9 +37,12 @@ public class GameManager : MonoBehaviour
 
     public static HealthChangedEvent onHealthChangeEvent = new HealthChangedEvent();
     public static ScoreChangedEvent onScoreChangedEvent = new ScoreChangedEvent();
+    public static GameOverEvent onGameOverEvent = new GameOverEvent();
 
     public static GameManager Instance;
-    
+
+    [SerializeField]
+    private float _waitOnGameOver = 2.0f;
 
     private void Awake()
     {
@@ -84,9 +96,9 @@ public class GameManager : MonoBehaviour
         if (currentNumOfLives <= 0)
         {
             Debug.Log("Game Over");
-            endGameCanvas.EndGameScore(score);
+            onGameOverEvent.Invoke(true);
 
-            Time.timeScale = 0;
+            StartCoroutine(OnGameOver());
         }
         else
         {
@@ -102,8 +114,10 @@ public class GameManager : MonoBehaviour
 
         if (timeLeft <= 0.05)
         {
-            endGameCanvas.EndGameScore(score);
-            Time.timeScale = 0;
+            timeLeft = 0.0f;
+            onGameOverEvent.Invoke(true);
+
+            StartCoroutine(OnGameOver());
         }
     }
 
@@ -119,5 +133,16 @@ public class GameManager : MonoBehaviour
         tauntLeft.SetActive(false);
         tauntRigth.SetActive(false);
 
+    }
+
+    private IEnumerator OnGameOver()
+    {
+        courtainLeft.SetActive(true);
+        courtainRigth.SetActive(true);
+
+        yield return new WaitForSeconds(_waitOnGameOver);
+
+        endGameCanvas.EndGameScore(score);
+        Time.timeScale = 0;
     }
 }

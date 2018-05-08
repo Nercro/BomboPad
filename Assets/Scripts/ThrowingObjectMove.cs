@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ThrowingObjectMove : MonoBehaviour {
 
-  
+    [Header("Set other sprite if object has another form")]
+    public Sprite spriteImage;
 
+    [Header("Sets offset when collider is turned on")]
     public Transform player;
     public float playerPositionOffset = 2f;
  
@@ -14,12 +16,15 @@ public class ThrowingObjectMove : MonoBehaviour {
 
     private Transform _transform;
     private Collider2D _collider2D;
+    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
         _transform = transform;
 
         _collider2D = GetComponent<Collider2D>();
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         CameraAdjust();
 
@@ -58,5 +63,12 @@ public class ThrowingObjectMove : MonoBehaviour {
         _yMax = upMax.y;
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name == "Floor")
+        {
+            _spriteRenderer.sprite = spriteImage;
+        }
+    }
+
 }

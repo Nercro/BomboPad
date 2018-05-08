@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doesDamage: 0
   scoreValue: 1
+  addTimeValue: 2
   damageValue: 0
   addsLife: 0
   addLifeValue: 1
@@ -124,8 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8003f644454e9d24588511276950abaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteImage: {fileID: 21300000, guid: af6d5095ec61fb34c9b30e8de2ea8960, type: 3}
   player: {fileID: 4066258925138188, guid: c2c664b5f7a86414dbe52c4a233aefc2, type: 2}
-  playerPositionOffset: 3
+  playerPositionOffset: 4.5
 --- !u!212 &212542766501277488
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -159,8 +161,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 698909a2bda00674389730316aef7dfa, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: d3822f04825040a419583e2ba5202d6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
