@@ -5,6 +5,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public RuntimeAnimatorController playerAnimatorController;
+    public RuntimeAnimatorController playerDamagedAnimatorController;
+
     public float movementSpeed = 2;
 
     
@@ -93,9 +96,13 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private IEnumerator OnDamageBlink()
-    {                                                                       // 
+    {
+        _animator.runtimeAnimatorController = playerDamagedAnimatorController;
+
+
         for (int i = 0; i < 6; i++)                                         // blinkanje playera
         {                                                                   // 
+            
             Color color = _spriteRenderer.color;
             color.a = 0.5f;
             _spriteRenderer.color = color;
@@ -107,6 +114,8 @@ public class PlayerMovement : MonoBehaviour {
 
             yield return new WaitForSeconds(0.2f);
         }
-        
+
+        _animator.runtimeAnimatorController = playerAnimatorController;
+
     }
 }

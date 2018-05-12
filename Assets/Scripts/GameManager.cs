@@ -12,6 +12,8 @@ public class GameOverEvent : UnityEvent<bool> { }
 
 public class GameManager : MonoBehaviour
 {
+    public List<GameObject> playerSelection = new List<GameObject>();
+
     [Header("Taunt Animation Game Objects")]
     public GameObject tauntLeft;    //objekt sa aminmacijom
     public GameObject tauntRigth;   //objekt sa animacijom
@@ -48,14 +50,21 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
 
+        Instantiate(playerSelection[PlayerPrefs.GetInt("playerSelection")]);
+
         Time.timeScale = 1;
 
+        
+
+        //postavlja score na 0
+        scoreText.text = score.ToString();
+    }
+
+    private void Start()
+    {
         //postavlja zivote na max i invoka ih u eventu
         currentNumOfLives = maxNumOfLives;
         onHealthChangeEvent.Invoke(maxNumOfLives, false);
-
-        //postavlja score na 0
-        scoreText.text = "Score: " + score.ToString();
     }
 
     private void Update()
@@ -68,7 +77,7 @@ public class GameManager : MonoBehaviour
     {
         timeLeft += addTime;
         score += scorePoints;
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = score.ToString();
 
         onScoreChangedEvent.Invoke(score);
     }

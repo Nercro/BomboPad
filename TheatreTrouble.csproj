@@ -305,7 +305,7 @@
     <Compile Include="Assets\Scripts\UI Scripts\EndGamePanelController.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\LifePanelController.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\LifePanelGroupController.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\UIHowToPlayController.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\UICanvasController.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\UIPublishScoreButton.cs" />
   </ItemGroup>
   <ItemGroup>
