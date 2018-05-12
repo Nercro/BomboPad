@@ -114,6 +114,15 @@ MonoBehaviour:
   damageValue: 1
   addsLife: 0
   addLifeValue: 0
+  objectSprites:
+  - mainSprite: {fileID: 21300000, guid: 02932eb313531c048b20fd0ecf451576, type: 3}
+    onFloorSprite: {fileID: 21300000, guid: 41f47241c5b821d4bac9aae838a3491f, type: 3}
+  - mainSprite: {fileID: 21300000, guid: f3e0d930b92497b44aa69dc9ca49fcf5, type: 3}
+    onFloorSprite: {fileID: 21300000, guid: ea2c6db3a26ff5649b927d555d309a7e, type: 3}
+  - mainSprite: {fileID: 21300000, guid: cb398c2d7f819ac42a46e3490c885c22, type: 3}
+    onFloorSprite: {fileID: 21300000, guid: 932e742dc0ae28046b610428254c9f8c, type: 3}
+  - mainSprite: {fileID: 21300000, guid: 47282d46166812d4b91dd0296c6314da, type: 3}
+    onFloorSprite: {fileID: 21300000, guid: 47282d46166812d4b91dd0296c6314da, type: 3}
 --- !u!114 &114722863396153620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8003f644454e9d24588511276950abaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteImage: {fileID: 21300000, guid: 41f47241c5b821d4bac9aae838a3491f, type: 3}
   player: {fileID: 4066258925138188, guid: c2c664b5f7a86414dbe52c4a233aefc2, type: 2}
   playerPositionOffset: 5
 --- !u!212 &212542766501277488

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
     
-    public GameObject throwingObjectPrefab;
+    //[System.Serializable]
+    //public class ObjectPerct
+    //{
+    //    public GameObject Obj;
+    //    public float Percent;
+    //}
+   
     public GameObject throwingObjectsClonesParent;
    
     public float speed = 15.0f;
@@ -19,6 +25,8 @@ public class Spawner : MonoBehaviour {
     [Header("Dificulty definer")]
     public int difficultyIncrease = 10;                         // definira svakih koliko bodova ce se povecati težina
 
+    
+    
     public List<GameObject> ThrowingObjects = new List<GameObject>();
 
     private int _throwingObjectIndex = 0;
@@ -71,7 +79,7 @@ public class Spawner : MonoBehaviour {
 
     private void DifficultyIncrease(int scoreAmount)
     {
-        // vjerojatnost spawnanja objekta i postavljanje minimalne vrijednosti spawna, speeda, i spawn intervala
+        // postotsk spawnanja objekta i postavljanje minimalne vrijednosti spawna, speeda, i spawn intervala
         if (scoreAmount >= _difficultyScore)
         {
             if (pointsObjectPercentage >= 0.8f)

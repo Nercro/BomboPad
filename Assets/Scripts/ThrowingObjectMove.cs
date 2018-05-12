@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ThrowingObjectMove : MonoBehaviour {
 
-    [Header("Set other sprite if object has another form")]
-    public Sprite spriteImage;
+   //[Header("Set other sprite if object has another form")]
+   //public Sprite spriteImage;
 
     [Header("Sets offset when collider is turned on")]
     public Transform player;
@@ -24,7 +24,7 @@ public class ThrowingObjectMove : MonoBehaviour {
 
         _collider2D = GetComponent<Collider2D>();
 
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        //_spriteRenderer = GetComponent<SpriteRenderer>();
 
         CameraAdjust();
 
@@ -67,7 +67,7 @@ public class ThrowingObjectMove : MonoBehaviour {
     {
         if (other.gameObject.name == "Floor")
         {
-            _spriteRenderer.sprite = spriteImage;
+            //_spriteRenderer.sprite = spriteImage;
         }
     }
 

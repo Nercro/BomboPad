@@ -52,8 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff482f6cb8ff8ed4bbf56d674134c728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwingObjectPrefab: {fileID: 1701045232436392, guid: 3b2619f28b4c91144abdaf5102e3a12a,
-    type: 2}
   throwingObjectsClonesParent: {fileID: 0}
   speed: 12
   spawnInterwal: 1.5
