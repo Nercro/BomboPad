@@ -291,6 +291,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ControllingCameraAspect.cs" />
     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
@@ -302,11 +303,17 @@
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\ThrowingObjectMove.cs" />
     <Compile Include="Assets\Scripts\ThrowingObjectScoreDamage.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\EndGamePanelController.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\LifePanelController.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\LifePanelGroupController.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\Select PLayer UI\UISelectPlayerButtonController.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\Select PLayer UI\UISelectPlayerController.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\Select PLayer UI\UISelectPlayerStartButton.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\UI End Game Panel\EndGamePanelController.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\UI End Game Panel\UIPublishScoreButton.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\UICanvasController.cs" />
-    <Compile Include="Assets\Scripts\UI Scripts\UIPublishScoreButton.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\UIClockImageAnimationSoundController.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\UIPauseMenuCanvasController.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\UIToggleSoundButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

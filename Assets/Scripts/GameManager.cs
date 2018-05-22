@@ -10,6 +10,8 @@ public class ScoreChangedEvent : UnityEvent<int> { }
 
 public class GameOverEvent : UnityEvent<bool> { }
 
+public class TimeLeftWariningEvent : UnityEvent<bool> { }
+
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> playerSelection = new List<GameObject>();
@@ -29,6 +31,9 @@ public class GameManager : MonoBehaviour
     [Header("Time countdown settings")]
     public float timeLeft = 30;
     public Text timeLeftText;
+    public Animator clockImageAnimation;
+    [Header("Set time when event will begin")]
+    public float clockImageTimeTrigger = 5.0f;
 
     [Header("Score settings")]
     public int score = 0;
@@ -36,10 +41,13 @@ public class GameManager : MonoBehaviour
 
     [Header("End Game Score Canvas")]
     public EndGamePanelController endGameCanvas;
+    [Header("Life,Score,Time Canvas to be deactivated on game over")]
+    public Canvas lifeScoreTimeManagerCanvas;
 
     public static HealthChangedEvent onHealthChangeEvent = new HealthChangedEvent();
     public static ScoreChangedEvent onScoreChangedEvent = new ScoreChangedEvent();
     public static GameOverEvent onGameOverEvent = new GameOverEvent();
+    public static TimeLeftWariningEvent timeLeftWarningEvent = new TimeLeftWariningEvent();
 
     public static GameManager Instance;
 
@@ -119,15 +127,33 @@ public class GameManager : MonoBehaviour
     public void CountdownTimer()
     {
         timeLeft -= Time.deltaTime;
-        timeLeftText.text = "TIME: " + timeLeft.ToString("00");
+        timeLeftText.text = timeLeft.ToString("00");
+
+        if (timeLeft <= clockImageTimeTrigger)
+            timeLeftWarningEvent.Invoke(true);
+        else
+            timeLeftWarningEvent.Invoke(false);
+
+
+
 
         if (timeLeft <= 0.05)
         {
             timeLeft = 0.0f;
             onGameOverEvent.Invoke(true);
+            timeLeftWarningEvent.Invoke(false);
 
             StartCoroutine(OnGameOver());
         }
+    }
+
+    private IEnumerator CountdownClockScale()
+    {
+        clockImageAnimation.SetBool("isScaling", true);
+
+        yield return new WaitForSeconds(2.0f);
+
+        clockImageAnimation.SetBool("isScaling", false);
     }
 
     //ova metoda se treba invokat kada se izgubi health
@@ -151,6 +177,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(_waitOnGameOver);
 
+        lifeScoreTimeManagerCanvas.enabled = false;
         endGameCanvas.EndGameScore(score);
         Time.timeScale = 0;
     }

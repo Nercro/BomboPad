@@ -5,7 +5,7 @@ using UnityEngine;
 public class UICanvasController : MonoBehaviour {
 
     public Canvas openCanvas;
-    public Canvas mainMenuCanvas;
+    public Canvas canvasToDisable;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class UICanvasController : MonoBehaviour {
 
     public void EnableCanvas()
     {
-        mainMenuCanvas.enabled = false;
+        canvasToDisable.enabled = false;
 
         openCanvas.enabled = true;
     }
@@ -23,6 +23,6 @@ public class UICanvasController : MonoBehaviour {
     {
         openCanvas.enabled = false;
 
-        mainMenuCanvas.enabled = true;
+        canvasToDisable.enabled = true;
     }
 }
