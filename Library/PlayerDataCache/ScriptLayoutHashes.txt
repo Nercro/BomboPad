@@ -1,4 +1,4 @@
-Android
+WindowsStandalone
 SceneListBegin?
 Assets/_Scenes/MainMenu.unity
 Assets/_Scenes/01Level.unity
